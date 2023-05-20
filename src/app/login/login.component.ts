@@ -45,7 +45,7 @@ export class LoginComponent {
 
 
   ngOnInit() {
-    this.http.get<any>('http://deploymetodologia.somee.com/api/Api/emisores')
+    this.http.get<any>('https://apimetodologias.azurewebsites.net/api/Api/emisores')
       .subscribe((data: any[]) => {
         this.emisores = data.map(emisor => {
           return {
@@ -81,7 +81,7 @@ export class LoginComponent {
       };
       
       
-      this.http.post('http://deploymetodologia.somee.com//api/Api/login', loginData)
+      this.http.post('https://apimetodologias.azurewebsites.net/api/Api/login', loginData)
         .subscribe(response => {
           
         const data = JSON.stringify(response);
