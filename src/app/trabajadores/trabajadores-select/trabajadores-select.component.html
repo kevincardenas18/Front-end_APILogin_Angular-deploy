@@ -1,0 +1,49 @@
+<!-- <div class="d-flex align-items-center">
+  <select class="form-select" [(ngModel)]="selectedEmisor" name="emisorSelect" (change)="onChangeEmisor($event)">
+    <option value="" disabled selected>Selecciona un emisor</option>
+    <option *ngFor="let emisor of emisores" [value]="emisor.Codigo" [selected]="emisor.NombreEmisor === emisores[0].NombreEmisor"><strong>{{ emisor.Codigo }} -</strong> {{ emisor.NombreEmisor }}</option>
+  </select>
+  <div class="ms-2 d-flex">
+    <button class="btn btn-primary" (click)="onSubmit()">Aceptar</button>
+  </div>
+</div> -->
+
+<div>
+  <p>{{ mensaje }}</p>
+  <p>{{ mensaje2 }}</p>
+</div>
+
+<div class="formulario-nuevo-centro-costos">
+    <div class="table-container">
+  
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Trabajador</th>
+            <th>Tipo</th> <!-- Nueva columna para los botones -->
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Nombres</th>
+            <th>Identificación</th>
+            <th>Entidad_Bancaria</th>
+            <th>CarnetIESS</th>
+
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cc of (datosTablaOriginal.length > 0 ? datosTablaOriginal : trabajadores) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+            <td>{{ cc.COMP_Codigo }}</td>
+            <td>{{ cc.Id_Trabajador }}</td>
+            <td>{{ cc.Tipo_trabajador }}</td>
+            <td>{{ cc.Apellido_Paterno }}</td>
+            <td>{{ cc.Apellido_Materno }}</td>
+            <td>{{ cc.Nombres }}</td>
+            <td>{{ cc.Identificacion }}</td>
+            <td>{{ cc.Entidad_Bancaria }}</td>
+            <td>{{ cc.CarnetIESS }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

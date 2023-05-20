@@ -1,0 +1,73 @@
+<br>
+<div class="d-flex align-items-center">
+  <input type="text" class="form-control input-small" placeholder="Buscar por concepto" [(ngModel)]="conceptoBusqueda">
+  <div class="ms-2 d-flex">
+    <button class="btn btn-warning me-2 btn-rounded" (click)="searchMovimientoPlanilla()">Buscar</button>
+    <button class="btn btn-dark btn-rounded" (click)="limpiarBusqueda()">Limpiar búsqueda</button>
+  </div>
+</div>
+
+<br>
+<button class="btn btn-primary mb-3" (click)="nuevoMovimientoPlanilla()">Crear nuevo Movimiento</button>
+
+<div class="table-container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Código Concepto</th>
+        <th>Concepto</th>
+        <th>Prioridad</th>
+        <th>Tipo de Operación</th>
+        <th>Cuenta 1</th>
+        <th>Cuenta 2</th>
+        <th>Cuenta 3</th>
+        <th>Cuenta 4</th>
+        <th>Movimiento Excepción 1</th>
+        <th>Movimiento Excepción 2</th>
+        <th>Movimiento Excepción 3</th>
+        <th>Aplica IESS</th>
+        <th>Aplica Imp Renta</th>
+        <th>Empresa Afecta IESS</th>
+        <th>Mensaje</th>
+        <th>Acciones</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movimiento of (movimientosPlanillaBusqueda.length > 0 ? movimientosPlanillaBusqueda : movimientosPlanilla) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+        <td>{{ movimiento.CodigoConcepto }}</td>
+        <td>{{ movimiento.Concepto }}</td>
+        <td>{{ movimiento.Prioridad }}</td>
+        <td>{{ movimiento.TipoOperacion }}</td>
+        <td>{{ movimiento.Cuenta1 }}</td>
+        <td>{{ movimiento.Cuenta2 }}</td>
+        <td>{{ movimiento.Cuenta3 }}</td>
+        <td>{{ movimiento.Cuenta4 }}</td>
+        <td>{{ movimiento.MovimientoExcepcion1 }}</td>
+        <td>{{ movimiento.MovimientoExcepcion2 }}</td>
+        <td>{{ movimiento.MovimientoExcepcion3 }}</td>
+        <td>{{ movimiento.Aplica_iess }}</td>
+        <td>{{ movimiento.Aplica_imp_renta }}</td>
+        <td>{{ movimiento.Empresa_Afecta_Iess }}</td>
+        <td>{{ movimiento.Mensaje }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2" (click)="editarMovimientoPlanilla(movimiento.CodigoConcepto)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="eliminarMovimientoPlanilla(movimiento.CodigoConcepto, movimiento.Concepto)">Eliminar</button>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <!-- Navegación de paginación -->
+  <div class="pagination-container">
+    <pagination-controls
+      (pageChange)="currentPage = $event"
+      previousLabel="Anterior"
+      nextLabel="Siguiente"
+      firstLabel="Primera"
+      lastLabel="Última"
+      class="pagination"
+    >
+    </pagination-controls>
+  </div>
+</div>
+<script src="../movimiento-planilla/movimiento-planilla.component.ts"></script>

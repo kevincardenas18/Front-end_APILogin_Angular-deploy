@@ -1,0 +1,9 @@
+{
+  "/*": {
+    "target": "http://deploymetodologia.somee.com/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin":true
+    
+  }
+}

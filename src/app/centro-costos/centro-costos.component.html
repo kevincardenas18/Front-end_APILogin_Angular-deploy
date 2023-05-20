@@ -1,0 +1,54 @@
+<div class="formulario-nuevo-centro-costos">
+    <br>
+    <!-- <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Buscar por nombre" [(ngModel)]="nombreBusqueda">
+    </div> -->
+    <div class="d-flex align-items-center">
+      <input type="text" class="form-control input-small" placeholder="Buscar por nombre" [(ngModel)]="descripcionBusqueda">
+      <div class="ms-2 d-flex">
+        <button class="btn btn-warning me-2 btn-rounded" (click)="searchCentroCostos()">Buscar</button>
+        <button class="btn btn-dark btn-rounded" (click)="limpiarBusqueda()">Limpiar búsqueda</button>
+      </div>
+    </div>
+
+    <br>
+    <button class="btn btn-primary mb-3" (click)="nuevoCentroCostos()">Crear nuevo Centro de Costos</button>
+  
+    <br>
+    <div class="table-container">
+  
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre Centro de Costos</th>
+            <th>Acciones</th> <!-- Nueva columna para los botones -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cc of (centroCostosBusqueda.length > 0 ? centroCostosBusqueda : centroCostos) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+            <td>{{ cc.Codigo }}</td>
+            <td>{{ cc.NombreCentroCostos }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary me-2" (click)="editarCentroCostos(cc.Codigo)">Editar</button>
+              <button class="btn btn-sm btn-danger" (click)="eliminarCentroCostos(cc.Codigo, cc.NombreCentroCostos)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    <!-- Navegación de paginación -->
+    <div class="pagination-container">
+      <pagination-controls
+        (pageChange)="currentPage = $event"
+        previousLabel="Anterior"
+        nextLabel="Siguiente"
+        firstLabel="Primera"
+        lastLabel="Última"
+        class="pagination"
+      >
+      </pagination-controls>
+    </div>
+  
